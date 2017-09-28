@@ -17,6 +17,10 @@ sed -i -e 's/beta/stable/g' nvidia_install.sh
 sed -i -e 's/1185.5.0/1465.7.0/g' nvidia_install.sh
 sed -i -e 's/375.20/384.59/g' nvidia_install.sh
 
+# run install and docker install
+sudo ./nvidia_install.sh
+sudo ./nvidia_docker_install.sh
+
 # add feature-gates to kubelet service
 awk '/cluster.local/ { print; print "  --feature-gates=\"Accelerators=true\" \\"; next }1' /etc/systemd/system/kubelet.service > /tmp/kubelet.service && sudo mv /tmp/kubelet.service /etc/systemd/system/kubelet.service
 
