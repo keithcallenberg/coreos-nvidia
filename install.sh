@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# stop and mask update engine
+sudo systemctl stop update-engine
+sudo systemctl mask update-engine
+
 # pull down and unzip coreos-nvidia PR that includes install scripts and other changes
 wget https://github.com/Clarifai/coreos-nvidia/archive/c2fec9021dc5394f22f3be24ffbcaed7a17b0826.zip
 unzip c2fec9021dc5394f22f3be24ffbcaed7a17b0826.zip
