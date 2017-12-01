@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# check to see if this has already been run
+if lsmod | grep "nvidia" &> /dev/null ; then
+  exit 0
+fi
+
 # stop and mask update engine
 sudo systemctl stop update-engine
 sudo systemctl mask update-engine
