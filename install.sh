@@ -36,6 +36,13 @@ awk '/cluster.local/ { print; print "  --feature-gates=\"Accelerators=true\" \\"
 # test nvidia-docker and also ensure the volume directory is populated
 nvidia-docker run --rm nvidia/cuda nvidia-smi
 
+# copy files if not already copied
+if [ ! -d "/var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib64" ]; then
+    sudo cp -R bin /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/
+    sudo cp -R lib64 /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/
+    sudo ln -s /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib64/ /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib
+fi
+
 # restart kubelet
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
