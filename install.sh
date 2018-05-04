@@ -31,7 +31,7 @@ sudo ./nvidia_install.sh
 sudo ./nvidia_docker_install.sh
 
 # add feature-gates to kubelet service
-awk '/cluster.local/ { print; print "  --feature-gates=\"Accelerators=true\" \\"; next }1' /etc/systemd/system/kubelet.service > /tmp/kubelet.service && sudo mv /tmp/kubelet.service /etc/systemd/system/kubelet.service
+#awk '/cluster.local/ { print; print "  --feature-gates=\"Accelerators=true\" \\"; next }1' /etc/systemd/system/kubelet.service > /tmp/kubelet.service && sudo mv /tmp/kubelet.service /etc/systemd/system/kubelet.service
 
 # test nvidia-docker and also ensure the volume directory is populated
 nvidia-docker run --rm nvidia/cuda nvidia-smi
