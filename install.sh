@@ -31,7 +31,7 @@ sudo ./nvidia_install.sh
 sudo ./nvidia_docker_install.sh
 
 # add feature-gates to kubelet service
-if ! [ grep "Accelerators" /etc/systemd/system/kubelet.service &> /dev/null ]; then
+if ! grep "Accelerators" /etc/systemd/system/kubelet.service ; then
   awk '/cluster.local/ { print; print "  --feature-gates=\"Accelerators=true\" \\"; next }1' /etc/systemd/system/kubelet.service > /tmp/kubelet.service && sudo mv /tmp/kubelet.service /etc/systemd/system/kubelet.service
 fi
 
