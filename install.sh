@@ -43,7 +43,7 @@ if [ ! -d "/var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib64" ]; then
     sudo mkdir -p /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/
     sudo cp -R /opt/bin /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/
     sudo cp -R /opt/lib64 /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/
-    sudo ln -s /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib64/ /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib
+    sudo ln -s /var/lib/nvidia-docker/volumes/nvidia_driver/384.59/lib64/ /usr/local/nvidia/lib/
 fi
 
 # restart kubelet
